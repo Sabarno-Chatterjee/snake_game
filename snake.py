@@ -27,4 +27,15 @@ class Snake():
             self.snake_body[snake].goto(x=new_x_position, y=new_y_position)
             time.sleep(0.1)
         self.snake_body[0].forward(20)
-        self.snake_body[0].right(90)
+
+    def up(self):
+        self.snake_body[0].setheading(90)
+
+    def down(self):
+        self.snake_body[0].setheading(270)
+
+    def right(self):
+        self.snake_body[0].setheading(0)
+
+    def left(self):
+        self.snake_body[0].setheading(180)
