@@ -2,6 +2,10 @@ from turtle import Turtle
 import time
 
 POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
+UP = 90
+DOWN = 270
+RIGHT = 0
+LEFT = 180
 
 
 class Snake():
@@ -9,6 +13,7 @@ class Snake():
     def __init__(self):
         self.snake_body = []
         self.create_snake()
+        self.head = self.snake_body[0]
 
     def create_snake(self):
         for position in POSITIONS:
@@ -26,16 +31,20 @@ class Snake():
             new_y_position = self.snake_body[snake - 1].ycor()
             self.snake_body[snake].goto(x=new_x_position, y=new_y_position)
             time.sleep(0.1)
-        self.snake_body[0].forward(20)
+        self.head.forward(20)
 
     def up(self):
-        self.snake_body[0].setheading(90)
+        if self.head.heading() != DOWN:
+            self.head.setheading(UP)
 
     def down(self):
-        self.snake_body[0].setheading(270)
+        if self.head.heading() != UP:
+            self.head.setheading(DOWN)
 
     def right(self):
-        self.snake_body[0].setheading(0)
+        if self.head.heading() != LEFT:
+            self.head.setheading(RIGHT)
 
     def left(self):
-        self.snake_body[0].setheading(180)
+        if self.head.heading() != RIGHT:
+            self.head.setheading(LEFT)
