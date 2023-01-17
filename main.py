@@ -28,8 +28,12 @@ game_is_on = True
 
 while game_is_on:
     my_screen.update()
-    for snake in snake_body:
-        snake.forward(20)
+    for snake in range(len(snake_body)-1, 0, -1):
+        new_x_position = snake_body[snake-1].xcor()
+        new_y_position = snake_body[snake-1].ycor()
+        snake_body[snake].goto(x=new_x_position, y=new_y_position)
         time.sleep(0.1)
+    snake_body[0].forward(20)
+    snake_body[0].right(90)
 
 my_screen.exitonclick()
