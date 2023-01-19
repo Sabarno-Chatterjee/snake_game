@@ -39,6 +39,13 @@ class Snake():
             time.sleep(0.05)
         self.head.forward(20)
 
+    def reset(self):
+        for snake in self.snake_body:
+            snake.goto(1000, 1000)
+        self.snake_body.clear()
+        self.create_snake()
+        self.head = self.snake_body[0]
+
     def up(self):
         if self.head.heading() != DOWN:
             self.head.setheading(UP)
